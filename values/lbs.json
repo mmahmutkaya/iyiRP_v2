@@ -1,0 +1,72 @@
+{
+    "name": "lbs",
+    "value": [
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "6K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        },
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "5K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        },
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "4K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        },
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "3K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        },
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "2K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        },
+        {
+            "proje": "T360",
+            "blok": "386",
+            "id": "1K",
+            "parent": [
+                "katlar"
+            ],
+            "childs": [
+                "mahaller"
+            ]
+        }
+    ],
+    "from_secret": false
+}

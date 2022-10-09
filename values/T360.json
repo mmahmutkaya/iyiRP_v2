@@ -1,0 +1,25 @@
+{
+    "from_secret": false,
+    "name": "T360",
+    "value": {
+        "AdaSifreleri": {
+            "astra1708202202360585": "386"
+        },
+        "Adalar": [
+            "386"
+        ],
+        "HataID": {
+            "001": "Mail adresi tespit edilemedi",
+            "002": "Mail adresi geçerli bir mail adresi değil"
+        },
+        "Proje": "T360",
+        "Versiyonlar": {
+            "386": "2023_v1"
+        },
+        "WbsNames": [
+            "kat",
+            "mahalTuru",
+            "bolge"
+        ]
+    }
+}

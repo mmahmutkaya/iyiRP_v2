@@ -1,0 +1,8 @@
+{
+    "from_secret": false,
+    "name": "hataID",
+    "value": {
+        "001": "Mail adresi tespit edilemedi",
+        "002": "Mail adresi geçerli bir mail adresi değil"
+    }
+}

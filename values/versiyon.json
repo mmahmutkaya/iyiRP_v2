@@ -1,0 +1,11 @@
+{
+    "name": "versiyon",
+    "value": [
+        {
+            "proje": "T360",
+            "blok": "386",
+            "currentVersiyon": "2023_v1"
+        }
+    ],
+    "from_secret": false
+}
