@@ -1,129 +1,8 @@
 [
     {
-        "route": "/addPozlar",
-        "http_method": "POST",
-        "function_name": "addPozlar",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": true,
-        "create_user_on_auth": true,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/getPozlar",
-        "http_method": "GET",
-        "function_name": "getPozlar",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/getMahalNodesByPoz",
-        "http_method": "GET",
-        "function_name": "getMahalNodesByPoz",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/login2",
-        "http_method": "POST",
-        "function_name": "login2",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/userRegester",
-        "http_method": "POST",
-        "function_name": "userRegester",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/mailTeyit",
-        "http_method": "POST",
-        "function_name": "mailTeyit",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/maileKodGonder",
-        "http_method": "POST",
-        "function_name": "maileKodGonder",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/sifreDegistir",
-        "http_method": "POST",
-        "function_name": "sifreDegistir",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/addLbs",
-        "http_method": "POST",
-        "function_name": "addLbs",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/deneme",
-        "http_method": "GET",
-        "function_name": "deneme",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
         "route": "/addMahal",
         "http_method": "POST",
         "function_name": "addMahal",
-        "validation_method": "NO_VALIDATION",
-        "respond_result": true,
-        "fetch_custom_user_data": false,
-        "create_user_on_auth": false,
-        "disabled": false,
-        "return_type": "JSON"
-    },
-    {
-        "route": "/addPoz",
-        "http_method": "POST",
-        "function_name": "addPoz",
         "validation_method": "NO_VALIDATION",
         "respond_result": true,
         "fetch_custom_user_data": false,
@@ -165,9 +44,9 @@
         "return_type": "JSON"
     },
     {
-        "route": "/addObjectsToObjArrayByDocId",
-        "http_method": "POST",
-        "function_name": "addObjectsToObjArrayByDocId",
+        "route": "/getPozlar",
+        "http_method": "GET",
+        "function_name": "getPozlar",
         "validation_method": "NO_VALIDATION",
         "respond_result": true,
         "fetch_custom_user_data": false,
@@ -176,9 +55,31 @@
         "return_type": "JSON"
     },
     {
-        "route": "/addMetrajToMahal",
+        "route": "/userRegester",
         "http_method": "POST",
-        "function_name": "addMetrajToMahal",
+        "function_name": "userRegester",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/maileKodGonder",
+        "http_method": "POST",
+        "function_name": "maileKodGonder",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/addLbs",
+        "http_method": "POST",
+        "function_name": "addLbs",
         "validation_method": "NO_VALIDATION",
         "respond_result": true,
         "fetch_custom_user_data": false,
@@ -198,6 +99,61 @@
         "return_type": "JSON"
     },
     {
+        "route": "/projeler",
+        "http_method": "POST",
+        "function_name": "projeler",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/getMahalNodesByPoz",
+        "http_method": "GET",
+        "function_name": "getMahalNodesByPoz",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/mailTeyit",
+        "http_method": "POST",
+        "function_name": "mailTeyit",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/addObjectsToObjArrayByDocId",
+        "http_method": "POST",
+        "function_name": "addObjectsToObjArrayByDocId",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/login2",
+        "http_method": "POST",
+        "function_name": "login2",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
         "route": "/getNodesLbs",
         "http_method": "GET",
         "function_name": "getNodesLbs",
@@ -209,9 +165,53 @@
         "return_type": "JSON"
     },
     {
-        "route": "/projeler",
+        "route": "/addMetrajToMahal",
         "http_method": "POST",
-        "function_name": "projeler",
+        "function_name": "addMetrajToMahal",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/addPozlar",
+        "http_method": "POST",
+        "function_name": "addPozlar",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": true,
+        "create_user_on_auth": true,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/sifreDegistir",
+        "http_method": "POST",
+        "function_name": "sifreDegistir",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/deneme",
+        "http_method": "GET",
+        "function_name": "deneme",
+        "validation_method": "NO_VALIDATION",
+        "respond_result": true,
+        "fetch_custom_user_data": false,
+        "create_user_on_auth": false,
+        "disabled": false,
+        "return_type": "JSON"
+    },
+    {
+        "route": "/addPoz",
+        "http_method": "POST",
+        "function_name": "addPoz",
         "validation_method": "NO_VALIDATION",
         "respond_result": true,
         "fetch_custom_user_data": false,

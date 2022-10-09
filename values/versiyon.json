@@ -2,9 +2,9 @@
     "name": "versiyon",
     "value": [
         {
-            "proje": "T360",
             "blok": "386",
-            "currentVersiyon": "2023_v1"
+            "currentVersiyon": "2023_v1",
+            "proje": "T360"
         }
     ],
     "from_secret": false

@@ -2,70 +2,70 @@
     "name": "lbs",
     "value": [
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "6K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         },
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "5K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         },
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "4K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         },
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "3K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         },
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "2K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         },
         {
-            "proje": "T360",
             "blok": "386",
+            "childs": [
+                "mahaller"
+            ],
             "id": "1K",
             "parent": [
                 "katlar"
             ],
-            "childs": [
-                "mahaller"
-            ]
+            "proje": "T360"
         }
     ],
     "from_secret": false
