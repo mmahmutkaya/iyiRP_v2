@@ -1,0 +1,8 @@
+{
+    "app_id": "iyirp_v2-cjnsx",
+    "config_version": 20210101,
+    "name": "iyiRP_v2",
+    "location": "IE",
+    "provider_region": "aws-eu-west-1",
+    "deployment_model": "LOCAL"
+}
