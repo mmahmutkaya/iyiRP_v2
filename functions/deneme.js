@@ -10,7 +10,7 @@ exports = async function (request, response) {
     },
   })
   
-  return response2
+  // return response2
   
   const response3 = await JSON.parse(response2.body.text())
   
