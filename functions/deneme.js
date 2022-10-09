@@ -51,7 +51,7 @@ exports = async function (request, response) {
   
   // lbs
   const response4 = response3.map(item=>{
-    if(item.isDeleted == false && typeof item.blokId == "object" && typeof item.parentNodeId == "object"){
+    if(item.isDeleted == false && typeof item.blokId == "string" && typeof item.parentNodeId == "string"){
       return {
         ...item,
         _id:new BSON.ObjectId(item._id),
