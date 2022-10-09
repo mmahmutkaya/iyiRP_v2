@@ -50,15 +50,15 @@ exports = async function (request, response) {
   
   
   // lbs
-  const response4 = response3.map(item=>{
-    if(item.isDeleted == false && typeof item.blokId == "string" && typeof item.parentNodeId == "string"){
+  const response4 = await response3.map(item =>{
+    // if(item.isDeleted == false && typeof item.blokId == "string" && typeof item.parentNodeId == "string"){
       return {
         ...item,
         _id:new BSON.ObjectId(item._id),
         blokId:new BSON.ObjectId(item.blokId),
-        parentNodeId:new BSON.ObjectId(item.parentNodeId),
+        parentId:new BSON.ObjectId(item.parentId)
       }
-    } 
+    // } 
   })
   
   return response4
