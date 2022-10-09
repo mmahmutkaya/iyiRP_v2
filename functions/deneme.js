@@ -1,6 +1,8 @@
 exports = async function (request, response) {
   
   
+  
+  
   const response2 = await context.http.get({
     url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
      headers: {
@@ -8,6 +10,9 @@ exports = async function (request, response) {
       'Content-Type': 'application/json'
     },
   })
+  
+  return response2
+  
   const response3 = await JSON.parse(response2.body.text())
   
   
