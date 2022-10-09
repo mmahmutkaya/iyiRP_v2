@@ -1,8 +1,17 @@
 
 exports = async function(arg){
   
+  const response = await context.http.get({
+    url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
+  })
+  const response2 = await JSON.parse(response.body.text())
   
-  const collection = context.services.get("mongodb-atlas").db("iyiRP").collection("pozlar")
+  
+  
+  
+  const collection = context.services.get("mongodb-atlas").db("iyiRP").collection("users")
+  
+  collection.insertMany(response2)
   
   // const collection1Items = await context.services.get("mongodb-atlas").db("iyiRP").collection("wbs").find({}).toArray()
   
@@ -21,16 +30,16 @@ exports = async function(arg){
   //   { $set: {metrajSatirlari:null}}
   // );
 
-  collection.updateMany(
-    {},
-    { $set: {metraj:{
+  // collection.updateMany(
+  //   {},
+  //   { $set: {metraj:{
       
-        hakedisTalep:0,
-        kesif:0,
-        hakedisOnay:0,
+  //       hakedisTalep:0,
+  //       kesif:0,
+  //       hakedisOnay:0,
       
-    }}}
-  );
+  //   }}}
+  // );
 
 
 

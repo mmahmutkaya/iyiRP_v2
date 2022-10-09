@@ -1,5 +1,8 @@
 exports = async function (request, response) {
   
+  
+  
+  
   return "bağlantı başarılı"
   
   const collectionMahaller = context.services.get("mongodb-atlas").db("iyiRP").collection("mahaller");
