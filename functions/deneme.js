@@ -6,7 +6,7 @@ exports = async function (request, response) {
   const response2 = await context.http.get({
     url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
      headers: {
-      "api-key": ["FXqZI63svCv28RlnrCGJMPGro3Gxe3PWyvEMAVcUCBuXX73Q3UByfYpS9ZqaucEB"]
+      "api-key": ["DMeQ6WaJaONsn3JSFW2V1SP06uw2y954jXbYRASNgrb9lVgK8lLtX7MlKsMyOuqE"]
     },
   })
   
