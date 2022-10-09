@@ -1,28 +1,41 @@
 exports = async function (request, response) {
   
   
+  const response2 = await context.http.get({
+    url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
+  })
+  const response3 = await JSON.parse(response2.body.text())
   
   
-  return "bağlantı başarılı"
+  return response3
   
-  const collectionMahaller = context.services.get("mongodb-atlas").db("iyiRP").collection("mahaller");
-  const collectionMetrajNodes = context.services.get("mongodb-atlas").db("iyiRP").collection("metrajNodes");
+  // const collection = context.services.get("mongodb-atlas").db("iyiRP").collection("users")
+  
+  // collection.insertMany(response2)
+  
+  
+  
+  
+  // return "bağlantı başarılı"
   
   // const collectionMahaller = context.services.get("mongodb-atlas").db("iyiRP").collection("mahaller");
+  // const collectionMetrajNodes = context.services.get("mongodb-atlas").db("iyiRP").collection("metrajNodes");
   
-  const mahalData = await collectionMahaller.find({},{mahalIsim:1}).toArray()
+  // // const collectionMahaller = context.services.get("mongodb-atlas").db("iyiRP").collection("mahaller");
   
-  // return mahalData
+  // const mahalData = await collectionMahaller.find({},{mahalIsim:1}).toArray()
   
-  mahalData.map(x =>{
+  // // return mahalData
+  
+  // mahalData.map(x =>{
     
-    collectionMetrajNodes.updateOne(
-      {mahalId:x._id},
-      { $set: {mahalIsim:x.mahalIsim }
-      }
-    );
+  //   collectionMetrajNodes.updateOne(
+  //     {mahalId:x._id},
+  //     { $set: {mahalIsim:x.mahalIsim }
+  //     }
+  //   );
     
-  })
+  // })
   
   
   
