@@ -2,11 +2,11 @@ exports = async function (request, response) {
   
   
   
-  const collectionName = "metrajNodes"
+  const collectionName = "lbs"
 
   const response2 = await context.http.get({
     url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
-     headers: {
+    headers: {
       "api-key": ["2PSKrR6duvZlhi0Ltif6iXDRTJ72fpEuoTK8XiqFnwsjj2kg5A5UQPy6uxwLDNF3"],
       "Collection-Name":[collectionName]
     },
@@ -17,7 +17,7 @@ exports = async function (request, response) {
   
   
   
-  // // users -- lbs
+  // // users - -- projeler -  -- projeler -- versiyonlar
   // const response4 = response3.map(item=>{
   //   return {
   //     ...item,
@@ -38,24 +38,51 @@ exports = async function (request, response) {
   // })
   
   
-  // metrajNodes
-  const response4 = await response3.map(item=>{
-    if(item.isDeleted == false){
+  // // pozlar
+  // const response4 = response3.map(item=>{
+  //   return {
+  //     ...item,
+  //     _id:new BSON.ObjectId(item._id),
+  //     ihaleId:new BSON.ObjectId(item.ihaleId),
+  //     parentNodeId:new BSON.ObjectId(item.parentNodeId),
+  //   }
+  // })
+  
+  
+  // lbs
+  const response4 = response3.map(item=>{
+    if(item.isDeleted == false && typeof item.blokId == "object" && typeof item.parentNodeId == "object"){
       return {
         ...item,
         _id:new BSON.ObjectId(item._id),
-        mahalId:new BSON.ObjectId(item.mahalId),
-        pozId:new BSON.ObjectId(item.pozId),
-        ihaleId:new BSON.ObjectId(item.ihaleId)
+        blokId:new BSON.ObjectId(item.blokId),
+        parentNodeId:new BSON.ObjectId(item.parentNodeId),
       }
-    }
+    } 
   })
   
   return response4
+
+  
+  
+  // // metrajNodes
+  // const response4 = await response3.map(item=>{
+  //   if(item.isDeleted == false){
+  //     return {
+  //       ...item,
+  //       _id:new BSON.ObjectId(item._id),
+  //       mahalId:new BSON.ObjectId(item.mahalId),
+  //       pozId:new BSON.ObjectId(item.pozId),
+  //       ihaleId:new BSON.ObjectId(item.ihaleId)
+  //     }
+  //   }
+  // })
+  
+  // return response4
   
   
   const collection = await context.services.get("mongodb-atlas").db("iyiRP").collection(collectionName)
-  collection.insertMany(response4)
+  await collection.insertMany(response4)
   
   
   
