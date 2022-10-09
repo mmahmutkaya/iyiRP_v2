@@ -2,24 +2,70 @@ exports = async function (request, response) {
   
   
   
-  
+  const collectionName = "metrajNodes"
+
   const response2 = await context.http.get({
     url: "https://us-east-1.aws.data.mongodb-api.com/app/iyirp-laumu/endpoint/deneme",
      headers: {
-      "api-key": ["DMeQ6WaJaONsn3JSFW2V1SP06uw2y954jXbYRASNgrb9lVgK8lLtX7MlKsMyOuqE"]
+      "api-key": ["2PSKrR6duvZlhi0Ltif6iXDRTJ72fpEuoTK8XiqFnwsjj2kg5A5UQPy6uxwLDNF3"],
+      "Collection-Name":[collectionName]
     },
   })
-  
-  // return response2
-  
   const response3 = await JSON.parse(response2.body.text())
   
   
-  return response3
   
-  // const collection = context.services.get("mongodb-atlas").db("iyiRP").collection("users")
   
-  // collection.insertMany(response2)
+  
+  // // users -- lbs
+  // const response4 = response3.map(item=>{
+  //   return {
+  //     ...item,
+  //     _id:new BSON.ObjectId(item._id)
+  //   }
+  // })
+  
+  
+  
+  // // mahaller
+  // const response4 = response3.map(item=>{
+  //   return {
+  //     ...item,
+  //     _id:new BSON.ObjectId(item._id),
+  //     blokId:new BSON.ObjectId(item.blokId),
+  //     parentNodeId:new BSON.ObjectId(item.parentNodeId),
+  //   }
+  // })
+  
+  
+  // metrajNodes
+  const response4 = await response3.map(item=>{
+    if(item.isDeleted == false){
+      return {
+        ...item,
+        _id:new BSON.ObjectId(item._id),
+        mahalId:new BSON.ObjectId(item.mahalId),
+        pozId:new BSON.ObjectId(item.pozId),
+        ihaleId:new BSON.ObjectId(item.ihaleId)
+      }
+    }
+  })
+  
+  return response4
+  
+  
+  const collection = await context.services.get("mongodb-atlas").db("iyiRP").collection(collectionName)
+  collection.insertMany(response4)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
