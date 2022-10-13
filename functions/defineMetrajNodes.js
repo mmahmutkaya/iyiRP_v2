@@ -481,6 +481,7 @@ exports = async function (request, response) {
       })
     }
     
+    return({ok:true,mesaj:"Kayıt işlemleri yapıldı."});
 
   } catch(err){
     return ({hata:true,hataYeri:"FONK // defineMetrajNodes // MONGO-6",hataMesaj:err.message});
