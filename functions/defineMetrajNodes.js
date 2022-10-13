@@ -470,7 +470,7 @@ exports = async function (request, response) {
     // DATABASE - poz Metraj Güncelleme
     if (gelenItems_pozMetrajGuncelle.length) {
       
-      await gelenItems_pozMetrajGuncelle.map(x =>{
+      gelenItems_pozMetrajGuncelle.map(x =>{
         
         collectionPozlar.findOneAndUpdate(
           {_id:new BSON.ObjectId(x.pozId)},
