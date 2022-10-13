@@ -323,6 +323,8 @@ exports = async function (request, response) {
   // MONGO-6 - TUR (KEŞİF, HAKEDİŞTALEP / HAKEDİŞONAY) YAPILACAKSA  --  YUKARIDA DEFINE (TANIMLAMA) METRAJ NODES YAPILMIŞTI
   Fonk_Tur: try {
     
+    if (sorguTuru !== "POST") break Fonk_Tur;
+    
     if (gelenItems.length === 0) break Fonk_Tur; // bir üstte bakıldı ama genelde burda olur, usulen kalsın
     
     if (tur == "tanimla") break Fonk_Tur
@@ -481,8 +483,7 @@ exports = async function (request, response) {
       })
     }
     
-    return({ok:true,mesaj:"Kayıt işlemleri yapıldı."});
-
+    
   } catch(err){
     return ({hata:true,hataYeri:"FONK // defineMetrajNodes // MONGO-6",hataMesaj:err.message});
   }
@@ -495,8 +496,9 @@ exports = async function (request, response) {
   // MONGO-7 - VERİLERİ DB DEN ALMA
   Fonk_GET: try {
     
-    if (sorguTuru !== "GET") break Fonk_GET;
-    
+    if (sorguTuru !== "GET") {
+      return({ok:true,mesaj:"Kayıt işlemleri yapıldı."});
+    }
     // return mahalIds
     
     // boş objelerden arındırmak için
