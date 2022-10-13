@@ -1,11 +1,16 @@
 [
     {
-        "name": "addPozlar",
+        "name": "updateMetrajNodesByPozId",
         "private": false,
         "disable_arg_logs": true
     },
     {
         "name": "getPozlar",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "maileKodGonder",
         "private": false,
         "disable_arg_logs": true
     },
@@ -19,45 +24,7 @@
         "private": false
     },
     {
-        "name": "addMahaller",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "login2",
-        "private": false
-    },
-    {
-        "name": "sendMail",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "generateKod",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "userRegester",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "validateEmail",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "mailTeyit",
-        "private": false
-    },
-    {
-        "name": "maileKodGonder",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "sifreDegistir",
+        "name": "getWbsAndPozs",
         "private": false,
         "disable_arg_logs": true
     },
@@ -67,72 +34,21 @@
         "disable_arg_logs": true
     },
     {
-        "name": "deneme",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addLbs",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addMahal",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "getMahalNodesByPoz",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addPoz",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "getNodesWbs",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addWbs_r1",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addWbs_r2",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addLbs2",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "getWbsNodes",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "addMahal2",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "getAllByKeyValue",
-        "private": false,
-        "disable_arg_logs": true
-    },
-    {
         "name": "addObjectsToObjArrayByDocId",
         "private": false,
         "disable_arg_logs": true
     },
     {
-        "name": "addMetraj",
+        "name": "deneme",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "mailTeyit",
+        "private": false
+    },
+    {
+        "name": "validateEmail",
         "private": false,
         "disable_arg_logs": true
     },
@@ -142,12 +58,76 @@
         "disable_arg_logs": true
     },
     {
-        "name": "defineMetrajNodes",
+        "name": "getLbsAndMahals",
         "private": false,
         "disable_arg_logs": true
     },
     {
-        "name": "updateMetrajNodesByPozId",
+        "name": "sendMail",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addPozlar",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "generateKod",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "sifreDegistir",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addWbs_r1",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addLbs2",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addMahal",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addMahaller",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "login2",
+        "private": false
+    },
+    {
+        "name": "projeler",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addPoz",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getMahalNodesByPoz",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getNodesWbs",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "defineMetrajNodes",
         "private": false,
         "disable_arg_logs": true
     },
@@ -157,7 +137,12 @@
         "disable_arg_logs": true
     },
     {
-        "name": "projeler",
+        "name": "getWbsNodes",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addWbs_r2",
         "private": false,
         "disable_arg_logs": true
     },
@@ -167,12 +152,27 @@
         "disable_arg_logs": true
     },
     {
-        "name": "getLbsAndMahals",
+        "name": "addMahal2",
         "private": false,
         "disable_arg_logs": true
     },
     {
-        "name": "getWbsAndPozs",
+        "name": "addLbs",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "userRegester",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getAllByKeyValue",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "addMetraj",
         "private": false,
         "disable_arg_logs": true
     }

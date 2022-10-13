@@ -12,6 +12,7 @@ exports = async function (request, response) {
   let ihaleId
   let tur
   let guncelNo
+  let sorguTuru
   
   let projeData
   
@@ -46,9 +47,9 @@ exports = async function (request, response) {
     if(tur.length == 0) return ({hata:true,hataYeri:"FONK // updateMetrajNodesByPozId",hataMesaj:"Gelen sorguda \"Tur\" HEADER var fakat boş, yönetici ile iletişime geçiniz."})
     if(!(tur == "tanimla" || tur == "kesif" || tur == "hakedisTalep" || tur == "hakedisOnay")) return ({hata:true,hataYeri:"FONK // defineMetrajNodes",hataMesaj:"Gelen sorguda \"Tur\" HEADER var fakat hatalı, program sorumlusu ile iletişime geçiniz."})
 
-    // if(!objHeader.hasOwnProperty('Objects-Array-Name')) return ({hata:true,hataYeri:"FONK // defineMetrajNodes",hataMesaj:"Gelen sorguda \"Objects-Array-Name\" HEADER tespit edilemedi, program sorumlusu ile iletişime geçiniz."})
-    // objArrayName = objHeader["Objects-Array-Name"][0];
-    // if(objArrayName.length == 0) return ({hata:true,hataYeri:"FONK // defineMetrajNodes",hataMesaj:"Gelen sorguda \"Objects-Array-Name\" HEADER var fakat boş, program sorumlusu ile iletişime geçiniz."})
+    if(!objHeader.hasOwnProperty('Sorgu-Turu')) return ({hata:true,hataYeri:"FONK // defineMetrajNodes",hataMesaj:"Gelen sorguda \"Sorgu-Turu\" HEADER tespit edilemedi, program sorumlusu ile iletişime geçiniz."})
+    sorguTuru = objHeader["Sorgu-Turu"][0];
+    if(sorguTuru.length == 0) return ({hata:true,hataYeri:"FONK // defineMetrajNodes",hataMesaj:"Gelen sorguda \"Sorgu-Turu\" HEADER var fakat boş, program sorumlusu ile iletişime geçiniz."})
 
 
   } catch (err){
@@ -141,6 +142,8 @@ exports = async function (request, response) {
 
   // MONGO-5 - DEFINE (TANIMLAMA) METRAJ NODES YAPILACAKSA - (METRAJ / TUR (KEŞİF, HAKEDİŞTALEP / HAKEDİŞONAY - DEĞİL)
   Fonk_Define: try {
+    
+    if (sorguTuru !== "POST") break Fonk_Define;
     
     if (gelenItems.length === 0) break Fonk_Define; // bir üstte bakıldı ama genelde burda olur, usulen kalsın
     
@@ -489,7 +492,9 @@ exports = async function (request, response) {
     
     
   // MONGO-7 - VERİLERİ DB DEN ALMA
-  try {
+  Fonk_GET: try {
+    
+    if (sorguTuru !== "GET") break Fonk_GET;
     
     // return mahalIds
     
