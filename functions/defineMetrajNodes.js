@@ -345,9 +345,30 @@ exports = async function (request, response) {
     
     let gelenItems_sil_mahal_poz = []
     let gelenItems_ekle_mahal_poz = []
+    let gelenItems_pozMetrajGuncelle = []
     
     await gelenItems.map(item => {
       
+      
+
+      if (item.tur == tur && item.dbIslem === "pozMetrajGuncelle") {
+        const collectionPozlar = context.services.get("mongodb-atlas").db("iyiRP").collection("pozlar")
+        // madem yazma yapıcaz yetki var mı? 
+        if(!projeData.yetkiler.ihaleler[ihaleId].fonksiyonlar.updateMetrajNodesByPozId[tur]["yazma"].includes(kullaniciMail)) {
+          yazmaYetkisiProblemi_tur = true
+        }
+        
+        // madem yazma yapıcaz yetki var mı? 
+        if(!projeData.yetkiler.ihaleler[ihaleId].fonksiyonlar.updateMetrajNodesByPozId[tur].isKayitYapilabilir) {
+          isKayitYapilabilirProblemi_tur = true
+        }
+        
+        gelenItems_pozMetrajGuncelle.push({
+          pozId:item.pozId,
+          pozMetraj:item.pozMetraj
+        });
+
+      }
       
 
       if (item.tur == tur && item.dbIslem === "sil") {
@@ -446,7 +467,27 @@ exports = async function (request, response) {
 
 
 
+    // const collectionPozlar = context.services.get("mongodb-atlas").db("iyiRP").collection("pozlar")
     
+    // DATABASE - poz Metraj Güncelleme
+    if (gelenItems_pozMetrajGuncelle.length) {
+      
+      await gelenItems_pozMetrajGuncelle.map(x =>{
+        
+        collectionPozlar.findOneAndUpdate(
+          {_id:new BSON.ObjectId(x.pozId)},
+          { $set: { ["metraj." + tur ]: x.pozMetraj } }
+          // {upsert:true} - bu poz zaten var olmalı
+          // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
+          // { $set: {[objArrayName]:item.objeler}}
+          // {$addToSet: { [objArrayName]: item.objeler} }
+          // { $push: { [objArrayName]: {$each : item.objeler} } }
+        );
+        
+      });
+    }
+    
+          
     // DATABASE - silme - tur metrajları
     if (gelenItems_sil_mahal_poz.length) {
       await gelenItems_sil_mahal_poz.map(item =>{
