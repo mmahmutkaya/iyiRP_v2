@@ -467,25 +467,23 @@ exports = async function (request, response) {
 
 
 
-    // const collectionPozlar = context.services.get("mongodb-atlas").db("iyiRP").collection("pozlar")
-    
-    // // DATABASE - poz Metraj Güncelleme
-    // if (gelenItems_pozMetrajGuncelle.length) {
+    // DATABASE - poz Metraj Güncelleme
+    if (gelenItems_pozMetrajGuncelle.length) {
       
-    //   await gelenItems_pozMetrajGuncelle.map(x =>{
+      await gelenItems_pozMetrajGuncelle.map(x =>{
         
-    //     collectionPozlar.findOneAndUpdate(
-    //       {_id:new BSON.ObjectId(x.pozId)},
-    //       { $set: { ["metraj." + tur ]: x.pozMetraj } }
-    //       // {upsert:true} - bu poz zaten var olmalı
-    //       // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
-    //       // { $set: {[objArrayName]:item.objeler}}
-    //       // {$addToSet: { [objArrayName]: item.objeler} }
-    //       // { $push: { [objArrayName]: {$each : item.objeler} } }
-    //     );
+        collectionPozlar.findOneAndUpdate(
+          {_id:new BSON.ObjectId(x.pozId)},
+          { $set: { ["metraj." + tur ]: x.pozMetraj } }
+          // {upsert:true} - bu poz zaten var olmalı
+          // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
+          // { $set: {[objArrayName]:item.objeler}}
+          // {$addToSet: { [objArrayName]: item.objeler} }
+          // { $push: { [objArrayName]: {$each : item.objeler} } }
+        );
         
-    //   });
-    // }
+      });
+    }
     
           
     // DATABASE - silme - tur metrajları
