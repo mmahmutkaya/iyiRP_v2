@@ -261,20 +261,22 @@ exports = async function (request, response) {
     // METRAJ SATIRI VARSA SİLİNMESİN
     // Silinemeycek dolu MetrajNodes ları tespit etme
     const collectionMetrajNodes = context.services.get("mongodb-atlas").db("iyiRP").collection("metrajNodes")
-    let silinebilecekler = []
+    let silinemezler1 = []
     if (gelenItems_sil.length) {
-      silinebilecekler = await collectionMetrajNodes.find(
+      silinemezler1 = await collectionMetrajNodes.find(
         // {ihaleId:new BSON.ObjectId(ihaleId),isDeleted:false },
         // {ihaleId:new BSON.ObjectId(ihaleId),isDeleted:false,["hakedisTalep.mevcutVersiyonlar"]:{$ne: []},["hakedisOnay.mevcutVersiyonlar"]:{$ne: []},["kesif.mevcutVersiyonlar"]:{$ne: []} },
-        {ihaleId:new BSON.ObjectId(ihaleId),"hakedisTalep.mevcutVersiyonlar": { $eq: [] },"hakedisOnay.mevcutVersiyonlar": { $eq: [] },"kesif.mevcutVersiyonlar": { $eq: [] } },
+        {ihaleId:new BSON.ObjectId(ihaleId), $or: [{"kesif.mevcutVersiyonlar":{ $gt: -Infinity }},{"hakedisTalep.mevcutVersiyonlar":{ $gt: -Infinity }},{"hakedisOnay.mevcutVersiyonlar":{ $gt: -Infinity }}]},
         {pozId:1,mahalId:1,mahalParentName:1,mahalKod:1,pozNo:1,'_id': false}
       ).toArray();
     }
     
+    // return({ok:true,mesaj:"Güncellemeler yapıldı.",silinemezler1});
+    
     let silinemezler =[]
     if (gelenItems_sil.length) {
       await gelenItems_sil.map(item => {
-        if (!silinebilecekler.find(x => x.mahalId == item.mahalId && x.pozId == item.pozId)) {
+        if (silinemezler1.find(x => x.mahalId == item.mahalId && x.pozId == item.pozId)) {
           silinemezler.push(item)
         }
       })
