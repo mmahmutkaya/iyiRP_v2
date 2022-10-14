@@ -290,28 +290,55 @@ exports = async function (request, response) {
     }
 
 
+    // // DATABASE - silme - "tanimla"
+    // if (gelenItems_sil.length) {
+    //   await gelenItems_sil.map(item =>{
+    //     collection.findOneAndUpdate(
+    //       {mahalId:new BSON.ObjectId(item.mahalId),pozId:new BSON.ObjectId(item.pozId)},
+    //       { $set: {isDeleted:zaman, isDeletedBy:user.kullaniciMail}},
+    //       { upsert: false, new: true }
+    //     );
+    //   });
+    // }
+    
+    let bulk = []
+    
     // DATABASE - silme - "tanimla"
     if (gelenItems_sil.length) {
       await gelenItems_sil.map(item =>{
-        collection.findOneAndUpdate(
-          {mahalId:new BSON.ObjectId(item.mahalId),pozId:new BSON.ObjectId(item.pozId)},
-          { $set: {isDeleted:zaman, isDeletedBy:user.kullaniciMail}},
-          { upsert: false, new: true }
-        );
+        bulk.push({
+          updateOne: {
+            filter: {mahalId:new BSON.ObjectId(item.mahalId),pozId:new BSON.ObjectId(item.pozId)},
+            update: { $set: {isDeleted:zaman, isDeletedBy:user.kullaniciMail}}
+          }
+        });
       });
     }
+    // await collection.bulkWrite(bulk, { ordered: false });
     
-     
     // DATABASE - ekleme - "tanimla"
     if (gelenItems_ekle.length) {
       await gelenItems_ekle.map(item =>{
-        collection.findOneAndUpdate(
-          {mahalId:item.mahalId,pozId:item.pozId},
-          { $set: {...item}}, // içeriği yukarıda ayarlandı
-          { upsert: true, new: true }
-        );
+        
+        bulk.push({
+          updateOne: {
+            filter: {mahalId:item.mahalId,pozId:item.pozId},
+            update: { $set: {...item}}, // içeriği yukarıda ayarlandı
+            upsert: true
+          }
+        });
+        
+        // collection.findOneAndUpdate(
+        //   {mahalId:item.mahalId,pozId:item.pozId},
+        //   { $set: {...item}}, // içeriği yukarıda ayarlandı
+        //   { upsert: true, new: true }
+        // );
+        
       });
     }
+    await collection.bulkWrite(bulk, { ordered: false });
+    
+    
     
   } catch(err){
     return ({hata:true,hataYeri:"FONK // defineMetrajNodes // MONGO-5",hataMesaj:err.message});
@@ -468,21 +495,30 @@ exports = async function (request, response) {
 
 
 
-
+    let bulk = []
+    
     // DATABASE - poz Metraj Güncelleme
     if (gelenItems_pozMetrajGuncelle.length) {
       
       gelenItems_pozMetrajGuncelle.map(x =>{
         
-        collectionPozlar.findOneAndUpdate(
-          {_id:new BSON.ObjectId(x.pozId)},
-          { $set: { ["metraj." + tur ]: x.pozMetraj } }
-          // {upsert:true} - bu poz zaten var olmalı
-          // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
-          // { $set: {[objArrayName]:item.objeler}}
-          // {$addToSet: { [objArrayName]: item.objeler} }
-          // { $push: { [objArrayName]: {$each : item.objeler} } }
-        );
+        bulk.push({
+          updateOne: {
+            filter: {_id:new BSON.ObjectId(x.pozId)},
+            update: { $set: { ["metraj." + tur ]: x.pozMetraj } },
+            // upsert: true
+          }
+        });
+
+        // collectionPozlar.findOneAndUpdate(
+        //   {_id:new BSON.ObjectId(x.pozId)},
+        //   { $set: { ["metraj." + tur ]: x.pozMetraj } }
+        //   // {upsert:true} - bu poz zaten var olmalı
+        //   // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
+        //   // { $set: {[objArrayName]:item.objeler}}
+        //   // {$addToSet: { [objArrayName]: item.objeler} }
+        //   // { $push: { [objArrayName]: {$each : item.objeler} } }
+        // );
         
       });
     }
@@ -492,11 +528,20 @@ exports = async function (request, response) {
     if (gelenItems_sil_mahal_poz.length) {
       await gelenItems_sil_mahal_poz.map(item =>{
         
-        collectionMetrajNodes.updateOne(
-          {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(item.ihaleId)},
-          // {mahalId:item.mahalId, pozId:item.pozId,ihaleId:ihaleId},
-          { $unset: { [tur + "." + guncelNo] :""}, $set: { [tur + ".nodeMetraj"]:0},$pull:{[tur +".mevcutVersiyonlar"]: guncelNo  } },
-        );
+        
+        bulk.push({
+          updateOne: {
+            filter: {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(item.ihaleId)},
+            update: { $unset: { [tur + "." + guncelNo] :""}, $set: { [tur + ".nodeMetraj"]:0},$pull:{[tur +".mevcutVersiyonlar"]: guncelNo  } },
+            // upsert: true
+          }
+        });
+
+        // collectionMetrajNodes.updateOne(
+        //   {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(item.ihaleId)},
+        //   // {mahalId:item.mahalId, pozId:item.pozId,ihaleId:ihaleId},
+        //   { $unset: { [tur + "." + guncelNo] :""}, $set: { [tur + ".nodeMetraj"]:0},$pull:{[tur +".mevcutVersiyonlar"]: guncelNo  } },
+        // );
           
       });
     }
@@ -509,20 +554,32 @@ exports = async function (request, response) {
     if (gelenItems_ekle_mahal_poz.length) {
       await gelenItems_ekle_mahal_poz.map(item => {
         
-        collectionMetrajNodes.updateOne(
-          {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(ihaleId)},
-          // {mahalId:item.mahalId, pozId:item.pozId,ihaleId:ihaleId},
-          // { $set: { [tur + "." + guncelNo] : item.eklenecekObjeler}, $push:{[tur +".mevcutVersiyonlar"]: guncelNo }
-          { $set: { [tur + "." + guncelNo] : item.nodeMetraj, [tur + ".nodeMetraj"]:item.nodeMetraj}, $push:{[tur +".mevcutVersiyonlar"]: guncelNo }}
-          // {upsert:true}
-          // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
-          // { $set: {[objArrayName]:item.objeler}}
-          // {$addToSet: { [objArrayName]: item.objeler} }
-          // { $push: { [objArrayName]: {$each : item.objeler} } }
-        )
+        
+        bulk.push({
+          updateOne: {
+            filter: {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(ihaleId)},
+            update: { $set: { [tur + "." + guncelNo] : item.nodeMetraj, [tur + ".nodeMetraj"]:item.nodeMetraj}, $push:{[tur +".mevcutVersiyonlar"]: guncelNo }},
+            // upsert: true
+          }
+        });
+        
+        
+        // collectionMetrajNodes.updateOne(
+        //   {mahalId:new BSON.ObjectId(item.mahalId), pozId:new BSON.ObjectId(item.pozId),ihaleId:new BSON.ObjectId(ihaleId)},
+        //   // {mahalId:item.mahalId, pozId:item.pozId,ihaleId:ihaleId},
+        //   // { $set: { [tur + "." + guncelNo] : item.eklenecekObjeler}, $push:{[tur +".mevcutVersiyonlar"]: guncelNo }
+        //   { $set: { [tur + "." + guncelNo] : item.nodeMetraj, [tur + ".nodeMetraj"]:item.nodeMetraj}, $push:{[tur +".mevcutVersiyonlar"]: guncelNo }}
+        //   // {upsert:true}
+        //   // { $addToSet: { ["metrajSatirlari"]: {$each : eklenecekObjeler2} } }
+        //   // { $set: {[objArrayName]:item.objeler}}
+        //   // {$addToSet: { [objArrayName]: item.objeler} }
+        //   // { $push: { [objArrayName]: {$each : item.objeler} } }
+        // )
         
       })
     }
+    
+    await collection.bulkWrite(bulk, { ordered: false });
     
     
   } catch(err){
